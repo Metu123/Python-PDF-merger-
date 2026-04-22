@@ -81,7 +81,7 @@ def merge_pdfs():
         print(f"\n  Merged PDF saved as:\n{output_file}")
 
     except Exception as e:
-        print(f"❌ Error during merge: {e}")
+        print(f" Error during merge: {e}")
 
     finally:
         merger.close()
