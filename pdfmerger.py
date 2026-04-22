@@ -16,7 +16,7 @@ def get_pdf_files():
             continue
 
         if not path.lower().endswith('.pdf'):
-            print("❌ Not a PDF file.")
+            print(" Not a PDF file.")
             continue
 
         pdf_files.append(path)
