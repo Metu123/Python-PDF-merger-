@@ -25,7 +25,7 @@ def get_pdf_files():
 
 
 def display_files(pdf_files):
-    print("\n📄 Files selected:")
+    print("\n Files selected:")
     for i, file in enumerate(pdf_files, start=1):
         print(f"{i}. {file}")
 
