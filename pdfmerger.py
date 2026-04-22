@@ -12,7 +12,7 @@ def get_pdf_files():
             break
 
         if not os.path.exists(path):
-            print("❌ File does not exist.")
+            print(" File does not exist.")
             continue
 
         if not path.lower().endswith('.pdf'):
