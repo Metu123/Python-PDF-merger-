@@ -44,12 +44,12 @@ def reorder_files(pdf_files):
         reordered = [pdf_files[i - 1] for i in order]
         return reordered
     except Exception:
-        print("❌ Invalid order. Keeping original.")
+        print("Invalid order. Keeping original.")
         return pdf_files
 
 
 def get_output_path(default_dir):
-    name = input("\nEnter output file name (without .pdf): ").strip()
+    name = input("\n Enter output file name (without .pdf): ").strip()
 
     if not name:
         name = "merged_output"
@@ -61,7 +61,7 @@ def merge_pdfs():
     pdf_files = get_pdf_files()
 
     if len(pdf_files) < 2:
-        print("❌ Need at least two PDF files.")
+        print("need at least two PDF files.")
         return
 
     display_files(pdf_files)
