@@ -1,28 +1,3 @@
-PDF Merger Tool (Python Script Documentation)
-
-Overview
-
-This script is a command-line utility that merges multiple PDF files into a single document using the PyPDF2 library.
-
-It provides interactive features such as:
-
-Selecting multiple PDF files manually
-
-Validating file paths
-
-Reordering selected files before merging
-
-Custom output filename
-
-Safe error handling during merge
-
-
-
----
-
-Features
-
-Merge multiple PDF files into one
 
 Interactive file selection (manual input)
 
