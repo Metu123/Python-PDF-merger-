@@ -1,42 +1,4 @@
 
-Interactive file selection (manual input)
-
-File existence and format validation
-
-Optional reordering of PDFs before merging
-
-Custom output filename
-
-Automatic output directory selection
-
-Error handling during merge process
-
-
-
----
-
-Requirements
-
-Python Version
-
-Python 3.7+
-
-
-Dependencies
-
-Install required library:
-
-pip install PyPDF2
-
-
----
-
-How It Works
-
-1. File Selection
-
-Function: get_pdf_files
-
 The script prompts the user to input PDF file paths one by one:
 
 User enters file path manually
