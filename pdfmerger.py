@@ -1,6 +1,7 @@
 import os
 from PyPDF2 import PdfMerger
 
+
 def get_pdf_files():
     print("Enter paths to PDF files (type 'done' to finish):")
     pdf_files = []
@@ -8,15 +9,15 @@ def get_pdf_files():
     while True:
         path = input("PDF path: ").strip()
 
-        if path.lower() == 'done':
+        if path.lower() == "done":
             break
 
-        if not os.path.exists(path):
-            print(" File does not exist.")
+        if not os.path.isfile(path):
+            print("File does not exist.")
             continue
 
-        if not path.lower().endswith('.pdf'):
-            print(" Not a PDF file.")
+        if not path.lower().endswith(".pdf"):
+            print("Not a PDF file.")
             continue
 
         pdf_files.append(path)
@@ -25,31 +26,38 @@ def get_pdf_files():
 
 
 def display_files(pdf_files):
-    print("\n Files selected:")
+    print("\nFiles selected:")
     for i, file in enumerate(pdf_files, start=1):
-        print(f"{i}. {file}")
+        print(f"{i}. {os.path.basename(file)}")
 
 
 def reorder_files(pdf_files):
-    choice = input("\nDo you want to reorder files? (y/n): ").lower()
+    choice = input("\nDo you want to reorder files? (y/n): ").strip().lower()
 
-    if choice != 'y':
+    if choice != "y":
         return pdf_files
 
     display_files(pdf_files)
-    print("\nEnter new order using numbers separated by commas (e.g., 2,1,3):")
+
+    print("\nEnter new order using numbers separated by commas")
+    print("Example: 2,1,3")
 
     try:
-        order = list(map(int, input("New order: ").split(',')))
+        order = list(map(int, input("New order: ").split(",")))
+
+        if sorted(order) != list(range(1, len(pdf_files) + 1)):
+            raise ValueError
+
         reordered = [pdf_files[i - 1] for i in order]
         return reordered
-    except Exception:
-        print("Invalid order. Keeping original.")
+
+    except ValueError:
+        print("Invalid order. Keeping original order.")
         return pdf_files
 
 
 def get_output_path(default_dir):
-    name = input("\n Enter output file name (without .pdf): ").strip()
+    name = input("\nEnter output file name (without .pdf): ").strip()
 
     if not name:
         name = "merged_output"
@@ -61,7 +69,7 @@ def merge_pdfs():
     pdf_files = get_pdf_files()
 
     if len(pdf_files) < 2:
-        print("need at least two PDF files.")
+        print("You need at least two PDF files.")
         return
 
     display_files(pdf_files)
@@ -78,10 +86,12 @@ def merge_pdfs():
             merger.append(pdf)
 
         merger.write(output_file)
-        print(f"\n  Merged PDF saved as:\n{output_file}")
+
+        print("\nMerged PDF saved successfully:")
+        print(output_file)
 
     except Exception as e:
-        print(f" Error during merge: {e}")
+        print(f"Error during merge: {e}")
 
     finally:
         merger.close()
